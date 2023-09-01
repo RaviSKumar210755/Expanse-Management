@@ -3,7 +3,18 @@ const cors = require("cors");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const colors = require("colors");
-const connectDb = require("./config/connectDb");
+const mongoose = require("mongoose");
+const connectDb = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`Server Running On ${mongoose.connection.host}`.bgCyan.white);
+  } catch (error) {
+    console.log(`${error}`.bgRed);
+  }
+};
 // config dot env file
 dotenv.config();
 //databse call
