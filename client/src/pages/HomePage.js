@@ -77,7 +77,7 @@ const HomePage = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         setLoading(true);
         const res = await axios.post(
-          "http://localhost:4000/api/v1/transections/get-transection",
+          "https://expance.onrender.com/api/v1/transections/get-transection",
           {
             userid: user._id,
             frequency,
@@ -101,7 +101,7 @@ const HomePage = () => {
     try {
       setLoading(true);
       await axios.post(
-        "http://localhost:4000/api/v1/transections/delete-transection",
+        "https://expance.onrender.com/api/v1/transections/delete-transection",
         {
           transacationId: record._id,
         }
@@ -122,7 +122,7 @@ const HomePage = () => {
       setLoading(true);
       if (editable) {
         await axios.post(
-          "http://localhost:4000/api/v1/transections/edit-transection",
+          "https://expance.onrender.com/api/v1/transections/edit-transection",
           {
             payload: {
               ...values,
@@ -135,7 +135,7 @@ const HomePage = () => {
         message.success("Transaction Updated Successfully");
       } else {
         await axios.post(
-          "http://localhost:4000/api/v1/transections/add-transection",
+          "https://expance.onrender.com/api/v1/transections/add-transection",
           {
             ...values,
             userid: user._id,
